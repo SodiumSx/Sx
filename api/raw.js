@@ -83,7 +83,7 @@ function handler(req, res) {
   }
   const hwidQ = P.sanitizeHwid(q.hwid || "");
   const ip = P.getIp(req);
-  if (!P.getLoaderSecret()) return P.sendLuaError(res);
+  if (!P.getLoaderSecret()) { console.warn("[sodium] raw reject=no-secret"); return P.sendLuaError(res); }
 
   P.isDatacenterIP(ip).then((dc) => {
     if (dc) {

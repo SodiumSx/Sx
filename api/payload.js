@@ -90,7 +90,7 @@ async function handler(req, res) {
   }
   if (!P.isTrustedExecutor(req)) return P.sendBlack(req, res);
   if (P.isFake(req)) return P.sendLuaError(res);
-  if (!P.getLoaderSecret()) return P.sendLuaError(res);
+  if (!P.getLoaderSecret()) { console.warn("[sodium] payload reject=no-secret"); return P.sendLuaError(res); }
   // Mandatory query order: s,k,hwid,place,p,n (plus trailing key when present)
   if (!P.checkQueryOrder(req, ["s", "k", "hwid", "place", "p", "n"])) return P.sendLuaError(res);
 
