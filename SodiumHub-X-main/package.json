@@ -1,6 +1,0 @@
-{
-  "name": "antiraw-sodiumhub",
-  "version": "4.0.1",
-  "private": true,
-  "engines": { "node": ">=18" }
-}
